@@ -4,37 +4,62 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
     <title>坐标获取工具</title>
+    <link
+        rel="stylesheet"
+        href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+        crossorigin=""
+    >
     <link rel="stylesheet" href="style.css">
-    
-    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_BAIDU_KEY"></script>
-    
-    <script type="text/javascript">
-        window._AMapSecurityConfig = {
-            securityJsCode: 'YOUR_AMAP_SECURITY_CODE',
-        }
-    </script>
-    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
 </head>
 <body>
     <div class="header">
-        <button id="btn-baidu" class="active">百度地图</button>
-        <button id="btn-amap">高德地图</button>
+        <div class="title-block">
+            <h1>坐标获取工具</h1>
+            <p>点击地图或使用定位，默认展示百度坐标</p>
+        </div>
+        <div class="header-actions">
+            <button id="locate-btn" class="secondary-btn">获取当前位置</button>
+            <span class="badge">OpenStreetMap</span>
+        </div>
     </div>
 
+    <div id="map-status" class="map-status warning">正在准备地图...</div>
     <div id="map-container"></div>
 
     <div class="footer">
-        <div class="coords-display">
-            <div>经度：<span id="text-lng">121.4737</span></div>
-            <div>纬度：<span id="text-lat">31.2304</span></div>
+        <div class="selector-row">
+            <label for="coord-system">坐标系</label>
+            <select id="coord-system">
+                <option value="bd09" selected>百度坐标 BD-09</option>
+                <option value="gcj02">高德坐标 GCJ-02</option>
+                <option value="wgs84">GPS 坐标 WGS84</option>
+            </select>
         </div>
+
+        <div class="coord-panel">
+            <div class="coord-item">
+                <span class="coord-label">经度</span>
+                <span id="current-lng" class="coord-number">121.484782</span>
+            </div>
+            <div class="coord-item">
+                <span class="coord-label">纬度</span>
+                <span id="current-lat" class="coord-number">31.234311</span>
+            </div>
+        </div>
+
         <div class="action-buttons">
             <button id="copy-lng">复制经度</button>
             <button id="copy-lat">复制纬度</button>
-            <button id="copy-all" class="primary">复制全部</button>
+            <button id="copy-all" class="primary">复制经纬度</button>
         </div>
     </div>
 
+    <script
+        src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+        crossorigin=""
+    ></script>
     <script src="app.js"></script>
 </body>
 </html>
