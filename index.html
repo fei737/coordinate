@@ -27,7 +27,10 @@
     <div id="map-status" class="map-status warning">正在准备地图...</div>
     <div id="map-container"></div>
 
-    <div class="footer">
+    <div id="coord-sheet" class="footer">
+        <button id="sheet-toggle" class="sheet-toggle" type="button" aria-expanded="true">
+            <span class="sheet-handle"></span>
+        </button>
         <div class="selector-row">
             <label for="coord-system">坐标系</label>
             <select id="coord-system">
@@ -38,13 +41,16 @@
         </div>
 
         <div class="coord-panel">
-            <div class="coord-item">
-                <span class="coord-label">经度</span>
-                <span id="current-lng" class="coord-number">121.484782</span>
-            </div>
-            <div class="coord-item">
-                <span class="coord-label">纬度</span>
-                <span id="current-lat" class="coord-number">31.234311</span>
+            <div class="coord-item coord-item-combined">
+                <div class="coord-row">
+                    <span class="coord-label">经度</span>
+                    <span id="current-lng" class="coord-number">121.484782</span>
+                </div>
+                <div class="coord-divider"></div>
+                <div class="coord-row">
+                    <span class="coord-label">纬度</span>
+                    <span id="current-lat" class="coord-number">31.234311</span>
+                </div>
             </div>
         </div>
 

@@ -21,6 +21,8 @@ const locateBtn = document.getElementById("locate-btn");
 const coordSystemEl = document.getElementById("coord-system");
 const currentLngEl = document.getElementById("current-lng");
 const currentLatEl = document.getElementById("current-lat");
+const coordSheetEl = document.getElementById("coord-sheet");
+const sheetToggleEl = document.getElementById("sheet-toggle");
 
 function setStatus(message, type = "warning") {
     statusEl.textContent = message;
@@ -110,6 +112,15 @@ function updateFromWgs84(lng, lat, sourceLabel) {
     }
 
     setStatus(`${sourceLabel} updated. Current type: ${state.activeType.toUpperCase()}.`, "success");
+
+    if (window.innerWidth <= 640) {
+        setSheetCollapsed(true);
+    }
+}
+
+function setSheetCollapsed(collapsed) {
+    coordSheetEl.classList.toggle("collapsed", collapsed);
+    sheetToggleEl.setAttribute("aria-expanded", String(!collapsed));
 }
 
 function initMap() {
@@ -211,6 +222,9 @@ document.getElementById("copy-all").addEventListener("click", () => {
 });
 
 locateBtn.addEventListener("click", locateCurrentPosition);
+sheetToggleEl.addEventListener("click", () => {
+    setSheetCollapsed(!coordSheetEl.classList.contains("collapsed"));
+});
 
 window.addEventListener("load", () => {
     renderActiveCoords();
