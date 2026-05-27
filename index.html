@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>坐标获取工具</title>
+    <link rel="stylesheet" href="style.css">
+    
+    <script type="text/javascript" src="https://api.map.baidu.com/api?v=3.0&ak=YOUR_BAIDU_KEY"></script>
+    
+    <script type="text/javascript">
+        window._AMapSecurityConfig = {
+            securityJsCode: 'YOUR_AMAP_SECURITY_CODE',
+        }
+    </script>
+    <script type="text/javascript" src="https://webapi.amap.com/maps?v=2.0&key=YOUR_AMAP_KEY"></script>
+</head>
+<body>
+    <div class="header">
+        <button id="btn-baidu" class="active">百度地图</button>
+        <button id="btn-amap">高德地图</button>
+    </div>
+
+    <div id="map-container"></div>
+
+    <div class="footer">
+        <div class="coords-display">
+            <div>经度：<span id="text-lng">121.4737</span></div>
+            <div>纬度：<span id="text-lat">31.2304</span></div>
+        </div>
+        <div class="action-buttons">
+            <button id="copy-lng">复制经度</button>
+            <button id="copy-lat">复制纬度</button>
+            <button id="copy-all" class="primary">复制全部</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>
